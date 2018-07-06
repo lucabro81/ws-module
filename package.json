@@ -1,6 +1,6 @@
 {
-    "name": "ws-generic-module",
-    "version": "0.0.2",
+    "name": "ws-module",
+    "version": "0.0.3",
     "description": "module to create and manage singleton web service classes in a angular way",
     "main": "package/core/services/Abs/AbsBaseService.js",
     "types": "package/core/services/Abs/AbsBaseService.d.ts",
@@ -10,18 +10,21 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "dependencies": {
+        "@types/signals": "^1.0.1",
+        "@types/rx": "^4.1.1",
+        "rx": "^4.1.0",
+        "signals": "^1.0.0",
+        "lucabro-linked-list": "^1.0.29",
+        "child_process": "^1.0.2",
+        "concurrently": "^3.5.1",
+        "fs": "0.0.1-security",
+        "typescript": "^2.8.3",
+        "typescript-require": "^0.2.10"
+    },
     "author": "Luca Brognara",
     "license": "ISC",
     "devDependencies": {
-      "@types/signals": "^1.0.1",
-      "@types/rx": "^4.1.1",
-      "rx": "^4.1.0",
-      "signals": "^1.0.0",
-      "lucabro-linked-list": "^1.0.29",
-      "child_process": "^1.0.2",
-      "concurrently": "^3.5.1",
-      "fs": "0.0.1-security",
-      "typescript": "^2.8.3",
-      "typescript-require": "^0.2.10"
+        "create-index": "^2.3.0"
     }
 }
