@@ -1,3 +1,5 @@
+import { IListener } from "./IListener";
+
 export abstract class AbsListener implements IListener{
 
     protected decorated_listener:IListener;

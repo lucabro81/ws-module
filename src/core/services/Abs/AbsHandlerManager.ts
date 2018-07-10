@@ -3,13 +3,12 @@ import {AbsListener} from "../Listener/AbsListener";
 import {WarningLevel} from "../../../utils/Emun";
 import {RequestManager} from "../System/RequestManager";
 import {Configuration} from "../../SetConfig";
+import {ResponseVO} from "../../../vo/ResponseVO";
 
 export class AbsHandlerManager {
 
     protected static is_loading_active:boolean = false;
     protected static is_loading_enabled:boolean = false;
-
-    // private static loading:Loading;
 
     /**
      *
@@ -56,7 +55,7 @@ export class AbsHandlerManager {
     protected presentLoadingDefault() {
         AbsHandlerManager.is_loading_active = true;
         if (Configuration.defaultLoading.enable) {
-            console.log("LOADING START");
+            Configuration.defaultLoading.presentLoadingDefault();
         }
     }
 
@@ -66,7 +65,7 @@ export class AbsHandlerManager {
     protected dismissLoadingDefault() {
         AbsHandlerManager.is_loading_active = false;
         if (Configuration.defaultLoading.enable) {
-            console.log("LOADING FINISH");
+            Configuration.defaultLoading.dismissLoadingDefault();
         }
     }
 

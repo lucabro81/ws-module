@@ -2,7 +2,7 @@ import {EndPointVO} from "./EndPointVO";
 import {Signal} from "signals";
 import {WarningLevel} from "../utils/Emun";
 
-interface RequestVO {
+export interface RequestVO {
     endpoint:EndPointVO,
     method?:string, // FIXME: il method potrebbe essere assegnato dal decorato @Get o @Post
     data?:any,

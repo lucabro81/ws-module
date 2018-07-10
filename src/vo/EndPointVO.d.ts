@@ -1,6 +1,6 @@
 import {WarningLevel} from "../utils/Emun";
 
-interface EndPointVO {
+export interface EndPointVO {
     url:string,
     warning_level:WarningLevel,
     access:boolean,

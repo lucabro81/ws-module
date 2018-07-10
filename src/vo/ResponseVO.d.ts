@@ -1,5 +1,5 @@
 
-interface ResponseVO<T> extends Response {
+export interface ResponseVO<T> extends Response {
     http_status?: number;
     code?: string;
     message?: string;

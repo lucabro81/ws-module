@@ -1,5 +1,7 @@
-export var Configuration:any = {}
+import {ConfigVO} from "../vo/ConfigVO";
 
-export function SetConfig(config:any) {
+export var Configuration:ConfigVO = <ConfigVO>{};
+
+export function SetConfig(config:ConfigVO) {
     Configuration = config;
 }

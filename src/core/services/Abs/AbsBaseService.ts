@@ -8,6 +8,7 @@ import {AbsHandlerManager} from "./AbsHandlerManager";
 import {RequestManager} from "../System/RequestManager";
 import {IService} from "../System/IService";
 import Observable = Rx.Observable;
+import {ResponseVO} from "../../../vo/ResponseVO";
 
 export class AbsBaseService extends AbsHandlerManager {
 

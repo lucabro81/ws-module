@@ -1,6 +1,6 @@
 import {WarningLevel} from "../utils/Emun";
 
-interface OverrideRequestDataVO {
+export interface OverrideRequestDataVO {
     warning_level:WarningLevel
     retry: number;
     debounce:number;

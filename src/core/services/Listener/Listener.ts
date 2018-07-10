@@ -1,4 +1,6 @@
-export class Listener implements IListener{
+import { IListener } from "./IListener";
+
+export class Listener implements IListener {
 
     constructor() {
 
