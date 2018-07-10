@@ -1,7 +1,7 @@
 {
     "name": "ws-module",
     "version": "0.0.5",
-    "description": "module to create and manage singleton web service classes in a angular way",
+    "description": "module to create and manage web service classes",
     "main": "package/core/services/Abs/AbsBaseService.js",
     "types": "package/core/services/Abs/AbsBaseService.d.ts",
     "files": [
