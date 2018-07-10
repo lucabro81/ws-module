@@ -1,6 +1,6 @@
 {
     "name": "ws-module",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "module to create and manage web service classes",
     "main": "package/core/services/Abs/AbsBaseService.js",
     "types": "package/core/services/Abs/AbsBaseService.d.ts",
@@ -11,7 +11,7 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "bin": {
-      "add-web-service": "scripts/add_web_service.js"
+      "add-web-service": "package/scripts/add_web_service.js"
     },
     "dependencies": {
         "@types/signals": "^1.0.1",
