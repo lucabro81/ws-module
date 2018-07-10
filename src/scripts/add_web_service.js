@@ -7,7 +7,7 @@ let path = require('path');
 let cp = require('child_process');
 let stdin = process.stdin;
 let stdout = process.stdout;
-let endpoints_class = require("./../src/utils/EndPoints");
+let endpoints_class = require(process.env.npm_package_config_endpoints);
 
 let re_mtd_1 = /{nome_mtd}/gi;
 let re_mtd_2 = /{nome_mtd_u}/gi;
