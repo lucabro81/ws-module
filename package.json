@@ -10,6 +10,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "config": {
+      "endpoints": "./path/to/Endpoints.ts"
+    },
     "bin": {
       "add-web-service": "package/scripts/add_web_service.js"
     },
