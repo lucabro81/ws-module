@@ -11,7 +11,7 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "bin": {
-      "add-web-service": "src/scripts/add_web_service.js"
+      "add-web-service": "scripts/add_web_service.js"
     },
     "dependencies": {
         "@types/signals": "^1.0.1",
