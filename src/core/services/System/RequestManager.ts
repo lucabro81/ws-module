@@ -6,6 +6,7 @@ import {AbsListener} from "../Listener/AbsListener";
 import {Listener} from "../Listener/Listener";
 import {RequestVO} from "../../../vo/RequestVO";
 import Observable = Rx.Observable;
+import {IListener} from "../Listener/IListener";
 
 export class RequestManager<R, T extends AbsListener> {
 

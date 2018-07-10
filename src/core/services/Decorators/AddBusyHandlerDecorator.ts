@@ -3,6 +3,7 @@ import {AbsListener} from "../Listener/AbsListener";
 import {WarningLevel} from "../../../utils/Emun";
 import {AbsBaseService} from "../Abs/AbsBaseService";
 import {RequestManager} from "../System/RequestManager";
+import {ResponseVO} from "../../../vo/ResponseVO";
 
 interface IDecoratorOptions {
     onStartRequest:(request:RequestManager<ResponseVO<any>, AbsListener>) => void

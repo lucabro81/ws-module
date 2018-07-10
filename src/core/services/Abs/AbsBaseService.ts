@@ -9,6 +9,7 @@ import {RequestManager} from "../System/RequestManager";
 import {IService} from "../System/IService";
 import Observable = Rx.Observable;
 import {ResponseVO} from "../../../vo/ResponseVO";
+import {DefaultAlertStructureVO} from "../../../vo/DefaultAlertStructureVO";
 
 export class AbsBaseService extends AbsHandlerManager {
 
