@@ -1,0 +1,27 @@
+import {AbsListener} from "../../../../core/services/Listener/AbsListener";
+
+export abstract class On{nome_srv_u}ServiceMethodListener extends AbsListener {
+
+    constructor() {
+        super();
+    }
+
+    public init(decorated_listener:IListener) {
+        super.init(decorated_listener);
+    }
+
+    public onError(evt:any) {
+        console.log("On{nome_srv_u}ServiceMethodListener.onError");
+        this.decorated_listener.onError(evt);
+    }
+
+    public onSuccess(evt:any) {
+        console.log("On{nome_srv_u}ServiceMethodListener.onSuccess");
+        this.decorated_listener.onSuccess(evt);
+    }
+
+    public destroy() {
+        this.decorated_listener.destroy();
+    }
+
+}

@@ -1,0 +1,26 @@
+import {Signal} from "signals";
+import {AbsDecoratedSignal} from "../../../../core/services/Abs/AbsDecoratedSignal";
+import {ISignal} from "../../../../core/services/Signal/ISignal";
+
+/**
+ *
+ */
+export class {nome_srv_u}ServiceMethodSignalContainer {
+
+    public on{nome_srv_u}ServiceSuccess:{nome_srv_u}ServiceMethodSignalDecorator<{nome_srv_u}ServiceMethodSignalContainer> =
+        new {nome_srv_u}ServiceMethodSignalDecorator<{nome_srv_u}ServiceMethodSignalContainer>(new Signal(), this);
+
+    public on{nome_srv_u}ServiceError:{nome_srv_u}ServiceMethodSignalDecorator<{nome_srv_u}ServiceMethodSignalContainer> =
+        new {nome_srv_u}ServiceMethodSignalDecorator<{nome_srv_u}ServiceMethodSignalContainer>(new Signal(), this);
+
+    constructor() {}
+}
+
+/**
+ *
+ */
+export class {nome_srv_u}ServiceMethodSignalDecorator<T> extends AbsDecoratedSignal<T> {
+    constructor(decorated_signal:ISignal, container:T) {
+        super(decorated_signal, container);
+    }
+}

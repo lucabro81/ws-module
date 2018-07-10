@@ -1,0 +1,61 @@
+     ////////////////////////////////////////
+    //                                    //
+   //          !!IMPORTANT!!             //
+  // DO NOT CANCEL THE "//--//" SYMBOL! //
+ //                                    //
+////////////////////////////////////////
+
+import {EndPoints} from "../../../utils/EndPoints";
+-->import {On{nome_mtd_u}ServiceMethodListener} from "./decorators/On{nome_mtd_u}ServiceMethodListener";
+//--//
+-->import {{nome_mtd_u}ServiceMethodSignalContainer} from "./decorators/{nome_mtd_u}ServiceMethodSignalContainer";
+//--//
+import {AbsBaseService} from "../../../core/services/Abs/AbsBaseService";
+import {IService} from "../../../core/services/System/IService";
+import {Get, Post} from "../../../core/services/Decorators/ServiceMethodRequestDecorators";
+
+</
+class {nome_mtd_u}SrvProperties {
+}
+/>
+//--//
+
+export class {nome_srv_u}Service extends AbsBaseService {
+
+    -->public {nome_mtd}Srv:IService<any, On{nome_mtd_u}ServiceMethodListener, {nome_mtd_u}ServiceMethodSignalContainer, {nome_mtd_u}SrvProperties>;
+    //--//
+
+    constructor() {
+        super();
+
+        -->this.{nome_mtd}Srv = this.setServiceObj({nome_mtd_u}ServiceMethodSignalContainer, "{nome_mtd}Srv", {nome_mtd_u}SrvProperties);
+        //--//
+    }
+
+    </
+    /**
+     *
+     * @param params
+     * @returns {RequestManager<ResponseVO<ResponseVO<any>>, on{nome_mtd_u}ServiceMethodListener>}
+     */
+    @{http_method}<ResponseVO<any>, On{nome_mtd_u}ServiceMethodListener>({
+            endpoint: {endpoint_obj},
+            config: {}
+        })
+    private _{nome_mtd}Srv(params:any):any {
+        return {
+            success_handler:
+                (response: ResponseVO<any>) => {
+                    /* do something */
+                },
+
+            error_handler:
+                (error) => {
+                    /* do something */
+                }
+        }
+    }
+    />
+    //--//
+
+}
