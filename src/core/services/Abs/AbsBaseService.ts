@@ -10,6 +10,7 @@ import {IService} from "../System/IService";
 import Observable = Rx.Observable;
 import {ResponseVO} from "../../../vo/ResponseVO";
 import {DefaultAlertStructureVO} from "../../../vo/DefaultAlertStructureVO";
+import {Configuration} from "../../SetConfig";
 
 export class AbsBaseService extends AbsHandlerManager {
 
@@ -19,11 +20,6 @@ export class AbsBaseService extends AbsHandlerManager {
 
     /**
      *
-     * @param http
-     * @param alertCtrl
-     * @param localStorage
-     * @param loadingCtrl
-     * @param secureStorage
      */
     constructor() {
         super()
@@ -178,12 +174,8 @@ export class AbsBaseService extends AbsHandlerManager {
      * @param message_obj
      */
     protected showAlert(message_obj:DefaultAlertStructureVO):void {
-        // let alert = this.alertCtrl.create({
-        //     title: message_obj.title,
-        //     subTitle: message_obj.body,
-        //     buttons: message_obj.btn_arr
-        // });
-        // alert.present();
+        console.log("message_obj", message_obj);
+        Configuration.errorAlertRequest(message_obj);
     }
 
     /**
