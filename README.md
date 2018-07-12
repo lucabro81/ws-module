@@ -105,7 +105,7 @@ npm install ws-module --save
         .testSrv
         .request({some_data:"data", other_data:"more_data"})
         .synchronize()
-        .setRequestId("ziocan")
+        .setRequestId("id_request")
         .setListener(new class extends OnTestServiceMethodListener {
     
             public onSuccess(evt):void {
