@@ -8,7 +8,7 @@ export class EndPoints {
         warning_level:WarningLevel.LOW,
         access: false,
         refresh: false,
-        default_method: "Post",
+        methods: ["Post", "Get"],
         retry:0
     };
 

@@ -91,13 +91,20 @@ export class AbsBaseService extends AbsHandlerManager {
         options.config.method = 'POST';
 
         let url:string;
+        let data:any;
+
         if (options.data && options.data.segments) {
             url = this.setSegmentedUrl(options.endpoint.url, options.data);
-            return Observable.fromPromise(fetch(url, options.config));
+            data = null;
+        }
+        else {
+            url = options.endpoint.url;
+            data = JSON.stringify(options.data);
         }
 
-        url = options.endpoint.url;
-        options.config.body = JSON.stringify(options.data);
+        options.config.method = 'POST';
+        options.config.body = data;
+
         return Observable.fromPromise(fetch(url, options.config));
     }
 
@@ -225,15 +232,15 @@ export class AbsBaseService extends AbsHandlerManager {
             this.manageError(error.json(), error_callback, warning_level);
         }
 
-        var error_json;
+        let error_json;
         try {
             error_json = error.json();
         }
         catch (e) {
-            return Observable.throw(new Error('Server error'));
+            return Observable.throw<Response>(new Error('Server error'));
         }
 
-        return Observable.throw(error_json || 'Server error');
+        return Observable.throw<Response>(error_json || 'Server error');
     }
 
     /**

@@ -1,0 +1,308 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ws-module</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">ws-module</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> ws-module</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="ws-module">ws-module</h1>
+				<p>Modulo per la gestione di richieste http, da utilizzare per creare ws-module declinati per framework/piattaforma</p>
+				<h3 id="installazione">Installazione</h3>
+				<pre><code>npm <span class="hljs-keyword">install</span> ws-<span class="hljs-keyword">module</span> <span class="hljs-comment">--save</span>
+</code></pre><h3 id="utilizzo">Utilizzo</h3>
+				<p>1) Creazione di una classe service (la creazione di una classe service è automatizzata usando i <a href="#">ws-module-scripts</a>)</p>
+				<pre><code class="lang-typescript">    <span class="hljs-keyword">import</span> {EndPoints} <span class="hljs-keyword">from</span> <span class="hljs-string">"EndPoints"</span>;
+    <span class="hljs-keyword">import</span> {OnTestServiceMethodListener} <span class="hljs-keyword">from</span> <span class="hljs-string">"./decorators/OnTestServiceMethodListener"</span>;
+    <span class="hljs-keyword">import</span> {TestServiceMethodSignalContainer} <span class="hljs-keyword">from</span> <span class="hljs-string">"./decorators/TestServiceMethodSignalContainer"</span>;
+    <span class="hljs-keyword">import</span> {AbsBaseService} <span class="hljs-keyword">from</span> <span class="hljs-string">"ws-module"</span>;
+    <span class="hljs-keyword">import</span> {IService} <span class="hljs-keyword">from</span> <span class="hljs-string">"ws-module"</span>;
+    <span class="hljs-keyword">import</span> {Get} <span class="hljs-keyword">from</span> <span class="hljs-string">"ws-module"</span>;
+
+    <span class="hljs-keyword">class</span> testSrvProperties {
+        prop1:<span class="hljs-built_in">string</span>;
+        prop2:<span class="hljs-built_in">number</span>;
+    }
+
+    <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TestService <span class="hljs-keyword">extends</span> AbsBaseService {
+
+        <span class="hljs-keyword">public</span> testSrv:IService&lt;<span class="hljs-built_in">any</span>, OnTestServiceMethodListener, TestServiceMethodSignalContainer, testSrvProperties&gt;;
+
+        <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+            <span class="hljs-keyword">super</span>();
+            <span class="hljs-keyword">this</span>.testSrv = <span class="hljs-keyword">this</span>.setServiceObj(TestServiceMethodSignalContainer, <span class="hljs-string">"testSrv"</span>, testSrvProperties);
+        }
+
+        <span class="hljs-comment">/**
+        *
+        * @param params
+        * @returns {RequestManager&lt;ResponseVO&lt;ResponseVO&lt;any&gt;&gt;, onTestServiceMethodListener&gt;}
+        */</span>
+        <span class="hljs-meta">@Get</span>&lt;ResponseVO&lt;<span class="hljs-built_in">any</span>&gt;, OnTestServiceMethodListener&gt;({
+            endpoint: EndPoints.USERS_ME,
+            config: {}
+        })
+        <span class="hljs-keyword">private</span> _testSrv(params:<span class="hljs-built_in">any</span>):<span class="hljs-built_in">any</span> {
+            <span class="hljs-keyword">return</span> {
+                success_handler:
+                    <span class="hljs-function">(<span class="hljs-params">response: ResponseVO&lt;<span class="hljs-built_in">any</span>&gt;</span>) =&gt;</span> {
+                        <span class="hljs-keyword">this</span>.testSrv.properties.prop2 = <span class="hljs-built_in">Math</span>.random();
+                        <span class="hljs-keyword">this</span>.testSrv.properties.prop1 = <span class="hljs-string">""</span> + <span class="hljs-built_in">Math</span>.random();
+                        <span class="hljs-keyword">this</span>.testSrv.signals.onTestServiceSuccess.dispatch(<span class="hljs-keyword">this</span>.testSrv, [<span class="hljs-string">"asdadasd"</span>]);
+                        <span class="hljs-keyword">this</span>.fireEvent(params.request_manager, <span class="hljs-string">"eventOne"</span>, response);
+                        <span class="hljs-keyword">this</span>.testSrv.signals.onTestServiceEventOne.dispatch(<span class="hljs-keyword">this</span>.testSrv, [<span class="hljs-string">"asdadasd1"</span>]);
+                    },
+
+                error_handler:
+                    <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+                        <span class="hljs-keyword">this</span>.testSrv.signals.onTestServiceError.dispatch();
+                        <span class="hljs-keyword">this</span>.fireEvent(params.request_manager, <span class="hljs-string">"eventTwo"</span>, error);
+                        <span class="hljs-keyword">this</span>.testSrv.signals.onTestServiceEventOne.dispatch(<span class="hljs-keyword">this</span>.testSrv, [<span class="hljs-string">"asdadasd2"</span>]);
+                    }
+            }
+        }
+
+    }
+</code></pre>
+				<p>2) Creazione di un&#39;istanza (la modalità di creazione dell&#39;istanza del service varia molto dalla declinazione di questo mod per altri framework)</p>
+				<pre><code class="lang-typescript">    <span class="hljs-keyword">import</span> { TestService } <span class="hljs-keyword">from</span> <span class="hljs-string">'./TestService.ts'</span>;
+
+    <span class="hljs-keyword">let</span> test_service:TestService = <span class="hljs-keyword">new</span> TestService();
+</code></pre>
+				<p>3) Creazione richiesta</p>
+				<pre><code class="lang-typescript">    <span class="hljs-comment">/*******************************/</span>
+    <span class="hljs-comment">/** Registrazione dei signals **/</span>
+    <span class="hljs-comment">/*******************************/</span>
+
+    test_service
+        .testSrv
+        .signals
+        .onTestServiceSuccess
+            .add(<span class="hljs-function">(<span class="hljs-params">evt:<span class="hljs-built_in">any</span></span>) =&gt;</span> {
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'onTestServiceSuccess'</span>, evt);
+            })
+        .onTestServiceError
+            .add(<span class="hljs-function">(<span class="hljs-params">evt:<span class="hljs-built_in">any</span></span>) =&gt;</span> {
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'onTestServiceError'</span>, evt);
+            });
+
+    <span class="hljs-comment">/***************************************/</span>
+    <span class="hljs-comment">/** Creazione e invio della richiesta **/</span>
+    <span class="hljs-comment">/***************************************/</span>
+
+    <span class="hljs-comment">// È possibile settare dei listener privati con scope limitato alla classe in cui vengono creati </span>
+    <span class="hljs-comment">// estendendo una classe preventivamente creata</span>
+
+    test_service
+        .testSrv
+        .request({some_data:<span class="hljs-string">"data"</span>, other_data:<span class="hljs-string">"more_data"</span>})
+        .synchronize()
+        .setRequestId(<span class="hljs-string">"id_request"</span>)
+        .setListener(<span class="hljs-keyword">new</span> <span class="hljs-keyword">class</span> <span class="hljs-keyword">extends</span> OnTestServiceMethodListener {
+
+            <span class="hljs-keyword">public</span> onSuccess(evt):<span class="hljs-built_in">void</span> {
+                <span class="hljs-keyword">super</span>.onSuccess(evt);
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"anonym.onSuccess"</span>);
+
+            }
+
+            <span class="hljs-keyword">public</span> onError(error):<span class="hljs-built_in">void</span> {
+                <span class="hljs-keyword">super</span>.onError(error);
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"anonym.onError"</span>);
+            }
+
+            <span class="hljs-keyword">public</span> eventOne():<span class="hljs-built_in">void</span> {
+                <span class="hljs-keyword">super</span>.eventOne();
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"eventOne"</span>);
+            }
+
+            <span class="hljs-keyword">public</span> eventTwo():<span class="hljs-built_in">void</span> {
+                <span class="hljs-keyword">super</span>.eventTwo();
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"eventTwo"</span>);
+            }
+
+            <span class="hljs-keyword">public</span> destroy():<span class="hljs-built_in">void</span> {
+                <span class="hljs-keyword">super</span>.destroy();
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"destroy"</span>);
+            }
+        })
+        .run();
+</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_setconfig_.html">"core/<wbr>Set<wbr>Config"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_services_abs_absbaseservice_.html">"core/services/<wbr>Abs/<wbr>Abs<wbr>Base<wbr>Service"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_services_abs_absdecoratedsignal_.html">"core/services/<wbr>Abs/<wbr>Abs<wbr>Decorated<wbr>Signal"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_services_abs_abshandlermanager_.html">"core/services/<wbr>Abs/<wbr>Abs<wbr>Handler<wbr>Manager"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_services_listener_abslistener_.html">"core/services/<wbr>Listener/<wbr>Abs<wbr>Listener"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_services_listener_ilistener_.html">"core/services/<wbr>Listener/IListener"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_services_listener_listener_.html">"core/services/<wbr>Listener/<wbr>Listener"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_services_signal_isignal_.html">"core/services/<wbr>Signal/ISignal"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_services_system_iservice_.html">"core/services/<wbr>System/IService"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_core_services_system_requestmanager_.html">"core/services/<wbr>System/<wbr>Request<wbr>Manager"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_emun_.html">"utils/<wbr>Emun"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_endpoints_.html">"utils/<wbr>End<wbr>Points"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

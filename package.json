@@ -10,6 +10,10 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/lucabro81/ws-module.git"
+    },
     "dependencies": {
         "@types/signals": "^1.0.1",
         "@types/rx": "^4.1.1",
@@ -24,7 +28,11 @@
     },
     "author": "Luca Brognara",
     "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/lucabro81/ws-module/issues"
+    },
     "devDependencies": {
-        "create-index": "^2.3.0"
+        "create-index": "^2.3.0",
+        "typedoc": "^0.11.1"
     }
 }

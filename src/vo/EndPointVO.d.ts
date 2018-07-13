@@ -6,6 +6,6 @@ export interface EndPointVO {
     access:boolean,
     refresh:boolean,
     retry?:number,
-    default_method:string,
+    methods:Array<string>,
     debounce?:number
 }
