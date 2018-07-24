@@ -1,9 +1,9 @@
 {
     "name": "ws-module",
-    "version": "0.0.15",
+    "version": "0.0.16",
     "description": "module to create and manage web service classes",
-    "main": "package/core/services/Abs/AbsBaseService.js",
-    "types": "package/core/services/Abs/AbsBaseService.d.ts",
+    "main": "package/index.js",
+    "types": "package/index.d.ts",
     "files": [
         "package/"
     ],
